@@ -1,0 +1,1 @@
+{ "rewrites": [{ "source": "/((?!model/|simulation/|resources/|assets/).*)", "destination": "/index.html" }] }
