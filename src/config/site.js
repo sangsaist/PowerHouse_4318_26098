@@ -4,10 +4,14 @@
  *  Every link, file and slide on the site is set here.
  *  Leave a value as `null` and the UI shows it as "PENDING".
  *
- *  Files placed in /public are served from the site root, e.g.
- *    public/resources/report.pdf  →  "/resources/report.pdf"
+ *  Files placed in /public are referenced with asset(), which adds
+ *  the deploy base path (e.g. /PowerHouse_4318_26098/ on GitHub Pages):
+ *    public/resources/report.pdf  →  asset("resources/report.pdf")
  * ─────────────────────────────────────────────────────────────
  */
+
+/* Resolves a file in /public against the deploy base path. */
+export const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
 export const site = {
   team: "POWERHOUSE",
@@ -21,18 +25,18 @@ export const site = {
 /* 3D model — Fusion 360 OBJ export. Textures referenced by the MTL
  * must sit in the same folder (public/model/). */
 export const model = {
-  obj: "/model/website.obj",
-  mtl: "/model/website.mtl",
-  basePath: "/model/",
+  obj: asset("model/website.obj"),
+  mtl: asset("model/website.mtl"),
+  basePath: asset("model/"),
   downloadName: "powerhouse-ps26098.obj",
 };
 
 /* MATLAB / Simulink slideshow.
  * Add screenshots to public/simulation/ and list them here:
- *   { src: "/simulation/01.png", caption: "Closed-loop response" }
+ *   { src: asset("simulation/01.png"), caption: "Closed-loop response" }
  * Entries with `src: null` render as empty placeholder frames. */
 export const simulation = {
-  pdf: null, // e.g. "/resources/simulation-slides.pdf"
+  pdf: null, // e.g. asset("resources/simulation-slides.pdf")
   slides: [
     { src: null, caption: "Slide placeholder" },
     { src: null, caption: "Slide placeholder" },

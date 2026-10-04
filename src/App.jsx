@@ -16,7 +16,7 @@ function ScrollManager() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />
